@@ -7,7 +7,7 @@ extern char __kern_size;
 static paddr_t kernel_start = (paddr_t) &__kern_phys_base;
 static paddr_t kernel_size = (paddr_t) &__kern_size;
 
-extern void set_pd(pde_t *pde);
+extern void set_pd_bootstrap(pde_t *pde);
 extern void enable_mmu();
 
 // bss segments
@@ -90,7 +90,7 @@ void pre_init()
 	map_kernel(page_directory);
 
 	// set the newly initialized page directory
-	set_pd(page_directory);
+	set_pd_bootstrap(page_directory);
 
 	// enable the mmu
 	enable_mmu();

@@ -10,13 +10,13 @@ SECTIONS
 	. = __kern_phys_base;
 	__bootstrap_start = .;
 	__start = .;
-	.bootstrap_text : { *(.bootkernel) *init.c.obj(.text) }
+	.bootstrap_text : { *boot.nasm.obj(.text) *init.c.obj(.text) *system.nasm.obj(.bootstrap) }
 	__bootstrap_end_text = .;
 
-	.bootstrap_data ALIGN(4096) : { *init.c.obj(.data .rodata*) *boot.s.obj(.data .rodata*) }
+	.bootstrap_data ALIGN(4096) : { *init.c.obj(.data .rodata*) *boot.nasm.obj(.data .rodata*) }
 	__bootstrap_end_data = .;
 
-	.bootstrap_bss ALIGN(4096) : { *init.c.obj(.bss COMMON) *boot.s.obj(.bss COMMON) }
+	.bootstrap_bss ALIGN(4096) : { *init.c.obj(.bss COMMON) *boot.nasm.obj(.bss COMMON) }
 	__bootstrap_end = .;
 
 	. += __kern_offset;

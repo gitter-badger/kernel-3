@@ -1,8 +1,9 @@
 
 global stacktop
 
-global _set_pd
-_set_pd:
+section .bootstrap
+global set_pd_bootstrap
+set_pd_bootstrap:
 	push ebp
 	mov ebp, esp
 	mov eax, [ebp+8]
@@ -10,8 +11,8 @@ _set_pd:
 	pop ebp
 	ret
 
-global _enable_mmu
-_enable_mmu:
+global enable_mmu
+enable_mmu:
 	; enable 4mb pages
 	mov eax, cr4
 	or eax, 0x00000010
@@ -21,6 +22,16 @@ _enable_mmu:
 	mov eax, cr0
 	or eax, 0x80000000
 	mov cr0, eax
+	ret
+
+section .text
+global set_pd
+set_pd:
+	push ebp
+	mov ebp, esp
+	mov eax, [ebp+8]
+	mov cr3, eax
+	pop ebp
 	ret
 
 section .bss
