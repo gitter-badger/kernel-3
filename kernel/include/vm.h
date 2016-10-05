@@ -5,8 +5,8 @@ typedef unsigned long paddr_t;
 typedef unsigned long pde_t;
 typedef unsigned long pte_t;
 
-#define VM_PDE_SIZE 1024
-#define VM_PTE_SIZE 1024
+#define VM_PD_SIZE 1024
+#define VM_PT_SIZE 1024
 
 /*!
  * Bootstrap method for kernel

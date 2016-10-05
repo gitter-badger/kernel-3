@@ -18,11 +18,11 @@ extern char __unpaged_end_data;
 extern char __unpaged_end;
 
 // Reserve space for a page directory
-pde_t __attribute__((aligned(4096))) page_directory[VM_PDE_SIZE];
+pde_t __attribute__((aligned(4096))) page_directory[VM_PD_SIZE];
 
 // Reserve space for two page tables, one for identity mapping first Mb
 // and one for recursive pde mapping
-pte_t __attribute__((aligned(4096))) pt_recursive[VM_PDE_SIZE];
+pte_t __attribute__((aligned(4096))) pt_recursive[VM_PT_SIZE];
 
 
 static void *memset_unpaged(void *ptr, uint8_t value, uint32_t num)
@@ -40,6 +40,9 @@ static void *memset_unpaged(void *ptr, uint8_t value, uint32_t num)
 static void setup_one_to_one_mappings(pde_t *pd)
 {
 	pd[0] = 0x0 | (0x1 << 8) | 0x1; // present and 4Mb
+
+	// map last entry to itself
+	pd[VM_PD_SIZE-1] = (unsigned long)pd | 0x1;
 }
 
 static vaddr_t map_kernel(pde_t *pd)
