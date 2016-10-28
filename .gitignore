@@ -24,3 +24,5 @@
 
 # Folders
 build/
+toolchain/usr/
+toolchain/build/
