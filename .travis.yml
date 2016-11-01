@@ -1,9 +1,5 @@
 language: c
 
-before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -qq libuv-dev libsqlite3-dev
-
 before_script:
   - toolchain/build.sh
   - mkdir build
