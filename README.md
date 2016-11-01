@@ -1,17 +1,14 @@
+[![Build Status](https://travis-ci.org/abbec/racoon.svg?branch=master)](https://travis-ci.org/abbec/racoon)
+
 # racoon
 A small OS for x86, initially targeting 486
 
 # Setting up the environment
-First, install the necessary tools: clang and nasm.
-Then run (in the top dir of Racoon):
+First, build a toolchain for cross compilation by running
 
-	$ source script/load_env.sh
-
-This will set up environment variables pointing to your
-clang binary and your assembler. If you have installed any
-of the above in a non-standard location, you will need to
-set the environment variables `ASM` and `CC` to the
-appropriate values yourself.
+	$ toolchain/build.sh
+	
+This will take a while so get yourself a cup of well deserved :coffee:
 
 # Building the kernel
 First, create a folder to hold the build artefacts:
