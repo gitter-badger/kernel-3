@@ -11,3 +11,7 @@ before_script:
   - cmake ../
 
 script: make
+
+cache:
+  directories:
+    - toolchain/usr
