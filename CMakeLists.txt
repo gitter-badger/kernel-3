@@ -12,7 +12,7 @@ set(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS "")
 project(racoon C ASM_NASM)
 
 if (NOT EXISTS ${PROJECT_SOURCE_DIR}/toolchain/usr)
-	message(FATAL_ERROR "No cross compiler could be found. Go into toolchain/ folder and build it")
+	message(FATAL_ERROR "No cross compiler could be found. Run toolchain/build.sh to build it")
 endif()
 
 set(CMAKE_C_COMPILER ${PROJECT_SOURCE_DIR}/toolchain/usr/bin/i686-elf-gcc)
