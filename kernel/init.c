@@ -81,9 +81,9 @@ void pre_init()
 			(uint32_t)&__unpaged_end -
 			(uint32_t)&__unpaged_end_data);
 
-	memset_unpaged(&__bootstrap_end_data, 0,
+	/*memset_unpaged(&__bootstrap_end_data, 0,
 			(uint32_t)&__bootstrap_end -
-			(uint32_t)&__bootstrap_end_data);
+			(uint32_t)&__bootstrap_end_data);*/
 
 	// this code needs to stay where it is
 	setup_one_to_one_mappings(page_directory);

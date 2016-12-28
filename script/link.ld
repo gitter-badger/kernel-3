@@ -10,7 +10,14 @@ SECTIONS
 	. = __kern_phys_base;
 	__bootstrap_start = .;
 	__start = .;
-	.bootstrap_text : { *boot.asm.obj(.text) *init.c.obj(.text) *system.asm.obj(.bootstrap) }
+	.bootstrap_text : ALIGN(4K)
+	{
+		*boot.asm.obj(.multiboot)
+		*boot.asm.obj(.text)
+		*init.c.obj(.text)
+		*system.asm.obj(.bootstrap)
+	}
+
 	__bootstrap_end_text = .;
 
 	.bootstrap_data ALIGN(4096) : { *init.c.obj(.data .rodata*) *boot.asm.obj(.data .rodata*) }
