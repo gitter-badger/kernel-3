@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.6)
-project(prism_deps)
+project(racoon_deps)
 
 set_directory_properties(PROPERTIES EP_PREFIX ${CMAKE_CURRENT_SOURCE_DIR}/usr)
 
@@ -29,7 +29,6 @@ ExternalProject_Add(
 ExternalProject_Add(
 	gcc
 	URL ftp://ftp.gnu.org/gnu/gcc/gcc-6.2.0/gcc-6.2.0.tar.bz2
-	CONFIGURE_COMMAND <SOURCE_DIR>/configure --prefix=<INSTALL_DIR> --target i686-elf
-	--disable-nls --enable-languages=c --without-headers --disable-libssp --disable-libquadmath
+	CONFIGURE_COMMAND <SOURCE_DIR>/configure --prefix=<INSTALL_DIR> --target i686-elf --disable-nls --enable-languages=c --without-headers --disable-libssp --disable-libquadmath
 	DEPENDS binutils
 )
