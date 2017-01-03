@@ -3,7 +3,7 @@ language: c
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y libgmp3-dev libmpfr-dev libmpc-dev nasm
-  - sudo .ci/get-cmake.sh
+  - .ci/get-cmake.sh
 
 before_script:
   - toolchain/build.sh
