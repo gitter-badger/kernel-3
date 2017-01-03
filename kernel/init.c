@@ -20,10 +20,6 @@ extern char __unpaged_end;
 // Reserve space for a page directory
 pde_t __attribute__((aligned(4096))) page_directory[VM_PD_SIZE];
 
-// Reserve space for two page tables, one for identity mapping first Mb
-// and one for recursive pde mapping
-pte_t __attribute__((aligned(4096))) pt_recursive[VM_PT_SIZE];
-
 
 static void *memset_unpaged(void *ptr, uint8_t value, uint32_t num)
 {
@@ -81,9 +77,7 @@ void pre_init()
 			(uint32_t)&__unpaged_end -
 			(uint32_t)&__unpaged_end_data);
 
-	/*memset_unpaged(&__bootstrap_end_data, 0,
-			(uint32_t)&__bootstrap_end -
-			(uint32_t)&__bootstrap_end_data);*/
+	memset_unpaged(page_directory, 0, sizeof(pde_t) * VM_PD_SIZE);
 
 	// this code needs to stay where it is
 	setup_one_to_one_mappings(page_directory);
