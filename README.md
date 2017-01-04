@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/abbec/racoon.svg?branch=master)](https://travis-ci.org/abbec/racoon)
+[![Build Status](https://travis-ci.org/racoon-os/kernel.svg?branch=master)](https://travis-ci.org/racoon-os/kernel)
 
 # racoon
 A small OS for x86, initially targeting 486. This is the kernel for the OS.
