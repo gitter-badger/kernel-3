@@ -74,7 +74,7 @@ _start:
 	; aligned above and we've since pushed a multiple of 16 bytes to the
 	; stack since (pushed 0 bytes so far) and the alignment is thus
 	; preserved and the call is well defined.
-	mov esp, stacktop
+	;mov esp, stacktop
 	extern kmain
 	call kmain
 
