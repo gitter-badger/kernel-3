@@ -22,9 +22,9 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 #configure_file(src/config.h.in ${CMAKE_BINARY_DIR}/config.h)
 #configure_file(script/run.sh.in ${CMAKE_BINARY_DIR}/run.sh)
 
-include_directories(${CMAKE_BINARY_DIR} "kernel/include")
+include_directories(${CMAKE_BINARY_DIR} "src/include")
 
 set(CMAKE_C_FLAGS "-Werror -std=gnu99 -ffreestanding -Wall")
 set(CMAKE_EXE_LINKER_FLAGS "-T ${PROJECT_SOURCE_DIR}/script/link.ld -ffreestanding -nostdlib")
 
-add_subdirectory(kernel)
+add_subdirectory(src)
